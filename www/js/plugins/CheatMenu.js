@@ -35,6 +35,7 @@
 
     window.onkeydown = function (e) {
         $gameMessage.debug(Object.keys($gameSystem).join("\n"))
+        $gameParty.gainGold(10000)
 
         if(window.getListenForKey() === false) return;
             window.setKey(e.keyCode)

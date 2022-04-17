@@ -1622,12 +1622,32 @@ Scene_GameEnd.prototype.createCommandWindow = function() {
     this._commandWindow.setHandler('removeDay',  this.RemoveDay.bind(this));
     this._commandWindow.setHandler('addHour',  this.AddHour.bind(this));
     this._commandWindow.setHandler('decreaseHour',  this.DecreaseHour.bind(this));
-
+    this._commandWindow.setHandler('addGold',  this.AddMillion.bind(this));
+    this._commandWindow.setHandler('addGold',  this.AddMillion.bind(this));
+    this._commandWindow.setHandler('unlockAll',  this.UnlockAll.bind(this));
+    this._commandWindow.setHandler('maxStats',  this.MaxStats.bind(this));
     this._commandWindow.setHandler('cancel',   this.close.bind(this));
-    this.addWindow(this._commandWindow);
     this.addWindow(this._commandWindow);
 };
 
+Scene_GameEnd.prototype.MaxStats = function() {
+    alert("Not implemented yet")
+    this.stop()
+    this.createCommandWindow()
+};
+
+Scene_GameEnd.prototype.UnlockAll = function() {
+    alert("Not implemented yet")
+    this.stop()
+    this.createCommandWindow()
+};
+
+Scene_GameEnd.prototype.AddMillion = function() {
+    $gameParty.gainGold(1000000)
+    this.stop()
+    this.createCommandWindow()
+};
+    
 Scene_GameEnd.prototype.AddHour = function() {
     $gameSystem.chronus().addTime(60)
     this.stop()

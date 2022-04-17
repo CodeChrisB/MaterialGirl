@@ -110,6 +110,7 @@ DataManager.loadMapData = function(mapId) {
     }
 
     if (mapId > 0) {
+        window["mapId"] =mapId
         var filename = 'Map%1.json'.format(mapId.padZero(3));
         this.makeEmptyMap();
         this.loadDataFile('$dataMap', filename);

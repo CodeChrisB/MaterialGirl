@@ -235,7 +235,7 @@
 		this.contents.blt(nick_bitmap, 0, 0, vw, vh, x-75, y+50);
 		
 		// 所持金
-		var money = $gameParty.gold()*10000;
+		var money = $gameParty.gold();
 		TS_Function.viewNumber( this.contents, money, x + 410, y + 195, num_bitmap, 1, 2, num_dot_bitmap );
 		
 		// サボり日数
