@@ -1576,6 +1576,10 @@ Window_MenuCommand.prototype.windowWidth = function() {
     return 240;
 };
 
+Window_MenuCommand.prototype.windoeHeight = function() {
+    return 700;
+};
+
 Window_MenuCommand.prototype.numVisibleRows = function() {
     return this.maxItems();
 };
@@ -1592,6 +1596,7 @@ Window_MenuCommand.prototype.makeCommandList = function() {
 Window_MenuCommand.prototype.addMainCommands = function() {
     var enabled = this.areMainCommandsEnabled();
     if (this.needsCommand('item')) {
+        $gameMessage.debug(enabled)
         this.addCommand(TextManager.item, 'item', enabled);
     }
     if (this.needsCommand('skill')) {
@@ -1631,7 +1636,7 @@ Window_MenuCommand.prototype.addSaveCommand = function() {
 
 Window_MenuCommand.prototype.addGameEndCommand = function() {
     var enabled = this.isGameEndEnabled();
-    this.addCommand(TextManager.gameEnd, 'gameEnd', enabled);
+    this.addCommand("Cheats", 'gameEnd', enabled);
 };
 
 Window_MenuCommand.prototype.needsCommand = function(name) {
@@ -1650,6 +1655,8 @@ Window_MenuCommand.prototype.needsCommand = function(name) {
             return flags[4];
         case 'save':
             return flags[5];
+        case 'cheat':
+            return flags[6]
         }
     }
     return true;
@@ -4179,8 +4186,6 @@ Window_EventItem.prototype.initialize = function(messageWindow) {
     Window_ItemList.prototype.initialize.call(this, 0, 0, width, height);
     this.openness = 0;
     this.deactivate();
-    this.setHandler('ok',     this.onOk.bind(this));
-    this.setHandler('cancel', this.onCancel.bind(this));
 };
 
 Window_EventItem.prototype.windowHeight = function() {
@@ -5789,7 +5794,7 @@ Window_GameEnd.prototype.initialize = function() {
 };
 
 Window_GameEnd.prototype.windowWidth = function() {
-    return 240;
+    return 340;
 };
 
 Window_GameEnd.prototype.updatePlacement = function() {
@@ -5798,9 +5803,35 @@ Window_GameEnd.prototype.updatePlacement = function() {
 };
 
 Window_GameEnd.prototype.makeCommandList = function() {
-    this.addCommand(TextManager.toTitle, 'toTitle');
+    this.addCommand("[-----Cheat Menu-----]");
     this.addCommand(TextManager.cancel,  'cancel');
+    this.addCommand(this.createCommandLabel("WallClip" ,"F12",window.getKey("123")), 'wallClip');
+    this.addCommand(this.createCommandLabel("Speedhack" ,"F11",window.getKey("122")), 'speed');
+    this.addCommand(this.createCustomCommandLabel("Add Day" ,"F10","Day",$gameSystem.chronus()._dayMeter), 'addDay');
+    this.addCommand(this.createCustomCommandLabel("Remove Day" ,"F9","Day",$gameSystem.chronus()._dayMeter), 'removeDay');
+    this.addCommand(this.createCustomCommandLabel("Add Hour" ,"+1:00","Day",Math.floor($gameSystem.chronus()._timeMeter/60)+":"+($gameSystem.chronus()._timeMeter%60).padZero(2)), 'addHour');
+    this.addCommand(this.createCustomCommandLabel("Decrease Hour" ,"-1:00","Day",Math.floor($gameSystem.chronus()._timeMeter/60)+":"+($gameSystem.chronus()._timeMeter%60).padZero(2)), 'decreaseHour');
 };
+
+
+Window_GameEnd.prototype.createCommandLabel = function(name,key,active) {
+    return [
+        name,
+        ["[",key,"]"].join(''),
+        active ? 'ON' : 'OFF'
+    ].join(' ')
+
+};
+
+Window_GameEnd.prototype.createCustomCommandLabel = function(name,key,valueName,value) {
+    return [
+        name,
+        ["[",key,"]"].join(''),
+        ["[",valueName," ",value,"]"].join('')
+    ].join(' ')
+};
+
+
 
 //-----------------------------------------------------------------------------
 // Window_DebugRange

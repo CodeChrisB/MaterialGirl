@@ -1613,16 +1613,74 @@ Scene_GameEnd.prototype.createBackground = function() {
 };
 
 Scene_GameEnd.prototype.createCommandWindow = function() {
+    window.setListenForKey(false)
     this._commandWindow = new Window_GameEnd();
     this._commandWindow.setHandler('toTitle',  this.commandToTitle.bind(this));
-    this._commandWindow.setHandler('cancel',   this.popScene.bind(this));
+    this._commandWindow.setHandler('wallClip',  this.wallClip.bind(this));
+    this._commandWindow.setHandler('speed',  this.speedHack.bind(this));
+    this._commandWindow.setHandler('addDay',  this.AddDay.bind(this));
+    this._commandWindow.setHandler('removeDay',  this.RemoveDay.bind(this));
+    this._commandWindow.setHandler('addHour',  this.AddHour.bind(this));
+    this._commandWindow.setHandler('decreaseHour',  this.DecreaseHour.bind(this));
+
+    this._commandWindow.setHandler('cancel',   this.close.bind(this));
     this.addWindow(this._commandWindow);
+    this.addWindow(this._commandWindow);
+};
+
+Scene_GameEnd.prototype.AddHour = function() {
+    $gameSystem.chronus().addTime(60)
+    this.stop()
+    this.createCommandWindow()
+};
+
+Scene_GameEnd.prototype.DecreaseHour = function() {
+    $gameSystem.chronus().addTime(-60)
+    this.stop()
+    this.createCommandWindow()
 };
 
 Scene_GameEnd.prototype.commandToTitle = function() {
     this.fadeOutAll();
+    window.setListenForKey(true)
     SceneManager.goto(Scene_Title);
+    this.stop()
 };
+
+Scene_GameEnd.prototype.close = function() {
+    window.setListenForKey(true)
+    this.stop()
+    this.popScene()
+};
+
+
+Scene_GameEnd.prototype.wallClip = function() {
+    window.setKey("123")
+    this.stop()
+    this.createCommandWindow()
+};
+
+Scene_GameEnd.prototype.speedHack = function() {
+    window.setKey("122")
+    this.stop()
+    this.createCommandWindow()
+};
+
+Scene_GameEnd.prototype.AddDay = function() {
+    $gameSystem.chronus().addDay(1);
+    this.stop()
+    this.createCommandWindow()
+};
+Scene_GameEnd.prototype.RemoveDay = function() {
+    if($gameSystem.chronus()._dayMeter>=2){
+        $gameSystem.chronus().addDay(-1);
+    }
+    this.stop()
+    this.createCommandWindow()
+};
+
+
+
 
 //-----------------------------------------------------------------------------
 // Scene_Shop

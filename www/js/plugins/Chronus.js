@@ -978,7 +978,7 @@ function Game_Chronus() {
 
     Game_Chronus.prototype.addDay = function (value) {
         if (arguments.length === 0) value = 1;
-        this._dayMeter += value*1000;
+        this._dayMeter += value;
         this.demandRefresh(false);
     };
 
