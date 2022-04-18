@@ -1344,7 +1344,7 @@ Scene_Status.prototype.initialize = function() {
 };
 
 Scene_Status.prototype.create = function() {
-    alert('test')
+    //NOTE
     Scene_MenuBase.prototype.create.call(this);
     this._statusWindow = new Window_Status();
     this._statusWindow.setHandler('cancel',   this.popScene.bind(this));
