@@ -207,6 +207,7 @@
 
 
 		// 範囲内に収める
+		alert(parm)
 		param.val += val;
 		var max_val = argParamMax[type];
 		param.val = Math.min(param.val, max_val);

@@ -24,8 +24,12 @@
 
     Game_Message.prototype.debugKeys = function (str) {
         var span = document.getElementById('debug');
+        if(str === false) return ""
         span.innerText = Object.keys(str).join('\n');
     }
+
+
+
     Game_Message.prototype.debugKeysA = function (str) {
         var span = document.getElementById('debug');
         span.innerText += Object.keys(str).join('\n');

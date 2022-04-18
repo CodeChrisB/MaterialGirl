@@ -306,10 +306,8 @@
 		for(var i=0; i<array.length; i++){
 			var cos = array[i];
 			var b_name = 'no';
-			console.log("adfadfafadfa")
-			$gameMessage.debugKeysA($dataArmors[ hash[cos]])
+			$gameMessage.debugAppend(cos)
 			if( $gameParty.hasItem($dataArmors[ hash[cos] ], true) ){
-				// アイテムを所持している
 				b_name = cos + hair_name;
 			}
 			
