@@ -4985,7 +4985,6 @@ Game_Party.prototype.isAnyMemberEquipped = function(item) {
 };
 
 Game_Party.prototype.gainItem = function(item, amount, includeEquip) {
-    alert(Object.keys(item))
     var container = this.itemContainer(item);
     if (container) {
         var lastNumber = this.numItems(item);

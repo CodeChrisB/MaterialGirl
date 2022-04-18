@@ -5814,7 +5814,7 @@ Window_GameEnd.prototype.makeCommandList = function() {
         this.addCommand(this.createCustomCommandLabel("Sub Day" ,"F9","Day",$gameSystem.chronus()._dayMeter), 'removeDay');
         this.addCommand(this.createCustomCommandLabel("Add Hour" ,"+1:00","Day",Math.floor($gameSystem.chronus()._timeMeter/60)+":"+($gameSystem.chronus()._timeMeter%60).padZero(2)), 'addHour');
         this.addCommand(this.createCustomCommandLabel("Sub Hour" ,"-1:00","Day",Math.floor($gameSystem.chronus()._timeMeter/60)+":"+($gameSystem.chronus()._timeMeter%60).padZero(2)), 'decreaseHour');
-        this.addCommand(this.createCustomCommandLabel("+1.000.000 Yen",null,null),"addGold");
+        this.addCommand(this.createCustomCommandLabel("1.000.000 Yen",null,null),"addGold");
     } 
     else if(window["CommandWindowIndex"] ===1){
         this.addCommand(this.createCustomCommandLabel("Unlock All",null,null),"unlockAll");

@@ -207,7 +207,6 @@
 
 
 		// 範囲内に収める
-		alert(parm)
 		param.val += val;
 		var max_val = argParamMax[type];
 		param.val = Math.min(param.val, max_val);
@@ -244,9 +243,7 @@
 	};
 
 	Game_Actor.prototype.maxParam = function () {
-
-		alert('test')
-	 $gameVariables.setValue(TS_GameConfig.SexNumVal, 999);
+	 	$gameVariables.setValue(TS_GameConfig.SexNumVal, 999);
 		$gameVariables.setValue(TS_GameConfig.Spoint, 999);
 		$gameVariables.setValue(TS_GameConfig.Mpoint, 999);
 

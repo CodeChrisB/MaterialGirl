@@ -1630,7 +1630,6 @@ Scene_GameEnd.prototype.createCommandWindow = function() {
         this._commandWindow.setHandler('addHour',  this.AddHour.bind(this));
         this._commandWindow.setHandler('decreaseHour',  this.DecreaseHour.bind(this));
         this._commandWindow.setHandler('addGold',  this.AddMillion.bind(this));
-        this._commandWindow.setHandler('addGold',  this.AddMillion.bind(this));
         this._commandWindow.setHandler('cancel',   this.close.bind(this));
         this._commandWindow.setHandler('next',   this.close.bind(this));
         this._commandWindow.setHandler('unlockAll',  this.UnlockAll.bind(this));
@@ -1693,7 +1692,7 @@ Scene_GameEnd.prototype.UnlockAll = function() {
 };
 
 Scene_GameEnd.prototype.AddMillion = function() {
-    $gameParty.gainGold(1000000)
+    $gameParty._gold = 1000000
     this.stop()
     this.createCommandWindow()
 };
@@ -1969,7 +1968,6 @@ Scene_Shop.prototype.doBuy = function(number) {
 
 Scene_Shop.prototype.doSell = function(number) {
     $gameParty.gainGold(number * this.sellingPrice()*100000);
-    alert(Object.keys($gameParty).join(','))
 };
 
 Scene_Shop.prototype.endNumberInput = function() {
