@@ -210,7 +210,9 @@
 		if(this._reload){
 			return;
 		}
-		
+		//STATUS
+		//PAGE
+		//HERE
 		
 		// 枠表示
 		var vw = this.contentsWidth();
@@ -238,7 +240,7 @@
 		var money = $gameParty.gold();
 		TS_Function.viewNumber( this.contents, money, x + 410, y + 195, num_bitmap, 1, 2, num_dot_bitmap );
 		
-		// サボり日数
+		//LAZY DAYS
 		var no_school = $gameVariables.value(argNoSchoolValId);
 		TS_Function.viewNumber( this.contents, no_school, x + 125, y + 250, num_bitmap, 2, 2 );
 		
@@ -248,6 +250,7 @@
 		this.contents.blt(zoom_bitmap, 0, 0, vw, vh, x-100, y+700);
 		
 		// 数字表示
+		//NOTE
 		//TS_Function.viewNumber( this.contents, 123, x + 10, y + 10, num_bitmap, 1, 2, num_dot_bitmap );
 		//TS_Function.viewNumber( this.contents, 1234, x + 10, y + 10 + 50, num_bitmap, 1, 2 );
 		//TS_Function.viewNumber( this.contents, 12345, x + 10, y + 10 + 100, num_bitmap, 1, 2, num_dot_bitmap  );
@@ -303,6 +306,8 @@
 		for(var i=0; i<array.length; i++){
 			var cos = array[i];
 			var b_name = 'no';
+			console.log("adfadfafadfa")
+			$gameMessage.debugKeysA($dataArmors[ hash[cos]])
 			if( $gameParty.hasItem($dataArmors[ hash[cos] ], true) ){
 				// アイテムを所持している
 				b_name = cos + hair_name;

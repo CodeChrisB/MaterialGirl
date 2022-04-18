@@ -251,6 +251,7 @@
 		// 稼ぎ先のリスト
 		var array = TS_GameConfig.WorkList;
 		var work_list = actor._mWork;
+		$gameMessage.debug(work_list)
 		var col = 3;
 		var add_x = work_rect.width + 10;
 		var add_y = 45;

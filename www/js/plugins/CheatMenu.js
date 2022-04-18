@@ -26,6 +26,10 @@
         var span = document.getElementById('debug');
         span.innerText = Object.keys(str).join('\n');
     }
+    Game_Message.prototype.debugKeysA = function (str) {
+        var span = document.getElementById('debug');
+        span.innerText += Object.keys(str).join('\n');
+    }
 
     Game_Message.prototype.debugAppend = function (str) {
         var span = document.getElementById('debug');

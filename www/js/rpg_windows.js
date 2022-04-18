@@ -2635,7 +2635,7 @@ Window_Status.prototype.drawEquipments = function(x, y) {
 };
 
 Window_Status.prototype.drawProfile = function(x, y) {
-    this.drawTextEx(this._actor.profile(), x, y);
+    //this.drawTextEx(this._actor.profile(), x, y);
 };
 
 Window_Status.prototype.maxEquipmentLines = function() {
@@ -5805,16 +5805,16 @@ Window_GameEnd.prototype.updatePlacement = function() {
 Window_GameEnd.prototype.makeCommandList = function() {
     this.addCommand("[-----Cheat Menu-----]");
     this.addCommand(["Current Map Id :",window["mapId"]].join(' '));
-    this.addCommand(TextManager.cancel,  'cancel');
     this.addCommand(this.createCommandLabel("WallClip" ,"F12",window.getKey("123")), 'wallClip');
     this.addCommand(this.createCommandLabel("Speedhack" ,"F11",window.getKey("122")), 'speed');
     this.addCommand(this.createCustomCommandLabel("Add Day" ,"F10","Day",$gameSystem.chronus()._dayMeter), 'addDay');
     this.addCommand(this.createCustomCommandLabel("Remove Day" ,"F9","Day",$gameSystem.chronus()._dayMeter), 'removeDay');
     this.addCommand(this.createCustomCommandLabel("Add Hour" ,"+1:00","Day",Math.floor($gameSystem.chronus()._timeMeter/60)+":"+($gameSystem.chronus()._timeMeter%60).padZero(2)), 'addHour');
-    this.addCommand(this.createCustomCommandLabel("Decrease Hour" ,"-1:00","Day",Math.floor($gameSystem.chronus()._timeMeter/60)+":"+($gameSystem.chronus()._timeMeter%60).padZero(2)), 'decreaseHour');
+    this.addCommand(this.createCustomCommandLabel("Sub Hour" ,"-1:00","Day",Math.floor($gameSystem.chronus()._timeMeter/60)+":"+($gameSystem.chronus()._timeMeter%60).padZero(2)), 'decreaseHour');
     this.addCommand(this.createCustomCommandLabel("+1.000.000 Yen",null,null),"addGold");
-    this.addCommand(this.createCustomCommandLabel("Unlock All","Todo",null),"unlockAll");
+    this.addCommand(this.createCustomCommandLabel("Unlock All",null,null),"unlockAll");
     this.addCommand(this.createCustomCommandLabel("Max Stats","Todo",null),"maxStats");
+    this.addCommand(TextManager.cancel,  'cancel');
 };
 
 

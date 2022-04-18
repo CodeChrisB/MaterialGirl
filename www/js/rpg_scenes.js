@@ -1344,6 +1344,7 @@ Scene_Status.prototype.initialize = function() {
 };
 
 Scene_Status.prototype.create = function() {
+    alert('test')
     Scene_MenuBase.prototype.create.call(this);
     this._statusWindow = new Window_Status();
     this._statusWindow.setHandler('cancel',   this.popScene.bind(this));
@@ -1609,7 +1610,7 @@ Scene_GameEnd.prototype.stop = function() {
 
 Scene_GameEnd.prototype.createBackground = function() {
     Scene_MenuBase.prototype.createBackground.call(this);
-    this.setBackgroundOpacity(128);
+    this.setBackgroundOpacity(128); 
 };
 
 Scene_GameEnd.prototype.createCommandWindow = function() {
@@ -1631,13 +1632,35 @@ Scene_GameEnd.prototype.createCommandWindow = function() {
 };
 
 Scene_GameEnd.prototype.MaxStats = function() {
-    alert("Not implemented yet")
+    //virgin maybe new cheat for that one
+    $gameSwitches.setValue(TS_GameConfig.argVirginSwi, false);
+    //lot of money
+    $gameParty._gold = 99999999
+    //max lewdness
+    $gameActors.actor(1).addLewd(1000)
+    //max popularity
+    //max bj
+    //max titty fuck
+        //$gameActors.actor(1).addPoly(1000);
+        //$gameActors.actor(1).maxParam();
+    //max vagina
+        //$gameVariables.setValue(TS_GameConfig.SexNumVal, 10000);
+
+
+    
+    //all dresses
     this.stop()
     this.createCommandWindow()
 };
 
 Scene_GameEnd.prototype.UnlockAll = function() {
-    alert("Not implemented yet")
+
+    var array = TS_GameConfig.WorkList;
+    for(var i=0; i<array.length; i++){
+        var work = array[i];
+        $gameActors.actor(1)._mWork[work] = true;
+    }
+
     this.stop()
     this.createCommandWindow()
 };
