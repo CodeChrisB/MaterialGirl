@@ -18,26 +18,26 @@
     //****************************************************************************
 
     Game_Message.prototype.debug = function (str) {
-        var span = document.getElementById('debug');
-        span.innerText = str;
+        //var span = document.getElementById('debug');
+        //span.innerText = str;
     }
 
     Game_Message.prototype.debugKeys = function (str) {
         var span = document.getElementById('debug');
         if(str === false) return ""
-        span.innerText = Object.keys(str).join('\n');
+        //span.innerText = Object.keys(str).join('\n');
     }
 
 
 
     Game_Message.prototype.debugKeysA = function (str) {
         var span = document.getElementById('debug');
-        span.innerText += Object.keys(str).join('\n');
+        //span.innerText += Object.keys(str).join('\n');
     }
 
     Game_Message.prototype.debugAppend = function (str) {
         var span = document.getElementById('debug');
-        span.innerText += str;
+        //span.innerText += str;
     }
 
 

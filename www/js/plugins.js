@@ -19,7 +19,6 @@ var $plugins =
 {"name":"VE_Single_Actor","status":true,"description":"One-Actor's menu. This plugin is made for one playable actor only.","parameters":{"Level Number x Distance":"50","Class text x Distance":"160","ExptoLvl text x Distance":"160","Status Window Width":"498"}},
 {"name":"TS_Config","status":true,"description":"システム設定","parameters":{}},
 {"name":"TS_Function","status":true,"description":"関数群","parameters":{}},
-{"name":"CheatMenu","status":true,"description":"関数群","parameters":{}},
 {"name":"TS_Function","status":true,"description":"関数群","parameters":{}},
 {"name":"TS_Localize","status":true,"description":"ローカライズ用のリスト","parameters":{}},
 {"name":"TS_ADVsystem","status":true,"description":"ADV用の演出の為のシステム","parameters":{}},
