@@ -356,6 +356,7 @@ DataManager.saveGame = function(savefileId) {
 };
 
 DataManager.loadGame = function(savefileId) {
+
     try {
         return this.loadGameWithoutRescue(savefileId);
     } catch (e) {

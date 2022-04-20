@@ -2469,3 +2469,4 @@ Scene_Gameover.prototype.isTriggered = function() {
 Scene_Gameover.prototype.gotoTitle = function() {
     SceneManager.goto(Scene_Title);
 };
+

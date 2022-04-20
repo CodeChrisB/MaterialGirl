@@ -1,2 +1,10 @@
 *.exe
 *.dll
+
+audio/
+data/
+fonts/
+img/
+save/   
+
+**js/plugins

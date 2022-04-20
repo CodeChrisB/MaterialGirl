@@ -3,29 +3,21 @@
 //=============================================================================
 
 window["mods"] = [
-    { "name": "CheatMenu", "status": true, "description": ""},
-    { "name": "rpg_windows", "status": true, "description": ""},
-    { "name": "Debug", "status": true, "description": ""},
-    { "name": "TS_ExtensionStatus", "status": true, "description": ""},
-    { "name": "rpg_objects", "status": true, "description": ""},
-    { "name": "ModGreeting", "status": true, "description": ""},
+    { "name": "_CheatMenu", "status": true, "description": ""},
+    { "name": "_rpg_windows", "status": true, "description": ""},
+    { "name": "_rpg_scenes", "status": true, "description": ""},
+    { "name": "_TS_ExtensionStatus", "status": true, "description": ""},
+    { "name": "_rpg_objects", "status": true, "description": ""},
+    
 ]
 PluginManager.setup($plugins);
 window.onload = function () {
     SceneManager.run(Scene_Boot);
-
-    WindowData()
-
-    ModLoader()
-
-};
-function WindowData(){
     window["maps"] = ["007", "021", "035", "120", "008", "022", "036", "121", "009", "023", "037", "122", "010", "024", "038", "143", "011", "025", "039", "146", "012", "026", "040", "013", "027", "041", "014", "028", "042", "001", "015", "029", "043", "002", "016", "030", "044", "003", "017", "031", "045", "004", "018", "032", "046", "005", "019", "033", "047", "006", "020", "034", "119"]
     window["mapIndex"] = 0
     window["keyListen"] = true
-}
 
-function ModLoader(){
+
     PluginManager.setup = function (plugins, path) {
         plugins.forEach(function (plugin) {
             if (plugin.status && !this._scripts.contains(plugin.name)) {
@@ -48,7 +40,9 @@ function ModLoader(){
     };
 
     PluginManager.setup(window["mods"], "js/mods/");
-}
+
+};
+
 
 Game_Message.prototype.debug = function (str) {
     //var span = document.getElementById('debug');
