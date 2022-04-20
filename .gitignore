@@ -1,10 +1,25 @@
 *.exe
 *.dll
 
-audio/
-data/
-fonts/
-img/
-save/   
+www/audio/
+www/data/
+www/fonts/
+www/img/
+www/save/   
+www/icon/
+**locales/
+**scenario/
+**MaterialGirl/
+**MaterialGirl/*
+
+audio
+data
+fonts
+img
+save 
+locales
+scenario
+MaterialGirl
+
 
 **js/plugins
