@@ -11,6 +11,7 @@ www/icon/
 **scenario/
 **MaterialGirl/
 **MaterialGirl/*
+**/plugins
 
 audio
 data
@@ -23,3 +24,17 @@ MaterialGirl
 
 
 **js/plugins
+
+getMods.bat
+./getMods.bat#
+
+
+
+**libs/
+plugins.js
+rpg_core.js
+rpg_managers.js
+rpg_objects.js
+rpg_scenes.js
+rpg_sprites.js
+rpg_windows.js
