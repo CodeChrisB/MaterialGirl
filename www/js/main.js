@@ -11,6 +11,7 @@ window["mods"] = [
     { "name": "ModGreeting", "status": true, "description": ""},
     { "name": "StartScreen", "status": true, "description": ""},
     { "name": "GamePlus", "status": true, "description": ""},
+    { "name": "ModeBox", "status": true, "description": ""},
 ]
 PluginManager.setup($plugins);
 window.onload = function () {

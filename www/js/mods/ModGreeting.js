@@ -14,7 +14,5 @@ DataManager.extractSaveContents = function(contents) {
         $gameMessage.add("\\. New Game+")
     }
 
-
-    
     require('nw.gui').Window.get().showDevTools();
 };

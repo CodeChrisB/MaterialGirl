@@ -18,8 +18,18 @@ Scene_GameEnd.prototype.createCommandWindow = function() {
         this._commandWindow.setHandler('unlockAll',  this.UnlockAll.bind(this));
         this._commandWindow.setHandler('maxStats',  this.MaxStats.bind(this));
         this._commandWindow.setHandler('next',   this.Next.bind(this));
+        this._commandWindow.setHandler('ng2',   this.Ng2.bind(this));
     this.addWindow(this._commandWindow);
 };
+
+Scene_GameEnd.prototype.Ng2 = function() {
+    $gameMessage.add("New Game Plus makes the whole game a lot harder")
+    $gameMessage.add("Less money, every Step you take costs money. If you run out of money,")
+    $gameMessage.add("it's over. Sakura is less lewd, skipping school is bad .... etc")
+    this.close()
+    SceneManager.pop()
+};
+
 
 Scene_GameEnd.prototype.Next = function() {
     window["CommandWindowIndex"]++
@@ -136,16 +146,23 @@ Scene_GameEnd.prototype.RemoveDay = function() {
 
 /*Speed Hack*/
 Game_CharacterBase.prototype.moveSpeed = function() {
-    return this._moveSpeed * window.getKey("122") ? 10 :1
+    if(window.gameplus) return 1
+    return this._moveSpeed * window.getKey("122") && !window.gameplus ? 10 :1
 };
 Game_CharacterBase.prototype.distancePerFrame = function() {
-    return (Math.pow(2, this.realMoveSpeed()) / 256) * (window.getKey("122") ? 2 :1)
+    if(window.gameplus) return (Math.pow(2, this.realMoveSpeed()) / 256)
+    return (Math.pow(2, this.realMoveSpeed()) / 256) * (window.getKey("122")  && !window.gameplus ? 2 :1)
 };
 /*Wall Clip*/
 Game_CharacterBase.prototype.isMovementSucceeded = function(x, y) {
+    if(window.gameplus) return this._movementSuccess
     return window.getKey("123") ? true : this._movementSuccess ;
 };
 Game_CharacterBase.prototype.setMovementSuccess = function(success) {
+    if(window.gameplus){
+        this._movementSuccess =success
+        return;
+    }
     this._movementSuccess = window.getKey("123") ? true : success;
 };
 
@@ -156,19 +173,35 @@ Game_CharacterBase.prototype.setMovementSuccess = function(success) {
 Window_MenuCommand.prototype.addGameEndCommand = function() {
     if(window.gameplus){
         //WIP fix it its not working
-        this.addCommand("To Title", 'toTitle', true);
+        this.addCommand("New Game +", 'gameEnd', true);
     }else{
         this.addCommand("Cheats", 'gameEnd', true);
     }
 };
 
-Window_GameEnd.prototype.makeCommandList = function(){
-    alert('t')
-}
+
 Window_GameEnd.prototype.makeCommandList = function() {
     if(window.gameplus){
-        return;
+        this.NgPlus()
+    }else{
+        this.CheatMenu()
     }
+};
+
+Window_GameEnd.prototype.NgPlus = function (){
+
+    this.addCommand("What's NG+","ng2");
+    this.addCommand("Money","ng2Money");
+    this.addCommand("School","ng2Money");
+    this.addCommand("Reputation","ng2Money");
+    //random chance that u get caught doing stuff then u earn less money
+    //try to add stuff to the save file
+    //if that does not work, seriazlize an object and save it into the gameId string
+    this.addCommand("Goal","ng2Money");
+
+}
+
+Window_GameEnd.prototype.CheatMenu = function (){
     //HEADER
     this.addCommand("[---Cheat Menu ("+(window["CommandWindowIndex"]+1)+"/"+(window["CommandWindowMaxIndex"]+1)+")---]","next");
     //PAGE 1
@@ -195,7 +228,7 @@ Window_GameEnd.prototype.makeCommandList = function() {
     //FOOTER
     //NAVIGATOR
     this.addCommand("[------Next Page------]","next");
-};
+}
 
 
 Window_GameEnd.prototype.createCommandLabel = function(name,key,active) {
