@@ -9,10 +9,9 @@
 - 7 Click on Browse...
 - 8 Drag and Drop the contents of the unpacked zip file into the directory that was opend in Step 7
 - 9 Start the Game
-- 10 Select New Game or Load a Save File
-- If you get greeted with following Message the patch was successfull
+ If you see a fourth option in the Start Menu the Mod is installed !
 
-![image](https://user-images.githubusercontent.com/55576076/164302506-062149cd-475e-40c3-ae48-711a7bd10ef2.png)
+![image](https://user-images.githubusercontent.com/55576076/164386258-2c74fd4e-9f15-4195-b095-140cd5fd5f5b.png)
 
 
 
